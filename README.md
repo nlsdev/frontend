@@ -1,2 +1,2 @@
 # frontend
-Frontend Guidelines and Tools
+Frontend Guidelines, Tools and Configurations
