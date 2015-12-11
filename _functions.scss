@@ -1,0 +1,43 @@
+// ***
+// * Function for color retrieval from a map
+// ***
+
+@function color($key) {
+  @if map-has-key($color, $key) {
+    @return map-get($color, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $color.";
+  @return null;
+}
+
+// Usage: Define a SCSS map with the key/pair values of colors you wish to include.
+
+// $color: (
+//  _green: #00783E,
+//  _gray: #96A4AA,
+//  _red: #CC0019,
+//  _white: #FFF,
+//  _black: #333,
+// );
+
+// Then use it in a rule like so: background: color(_green);
+
+
+// ***
+// * Function that converts pixels to rems
+// ***
+
+@function rem($pixels, $context: $rem) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+// Usage: rem(400px) => 25rem (with 16px root font-size)
