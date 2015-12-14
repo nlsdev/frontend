@@ -1,4 +1,5 @@
 **Front-end code guidelines**
+
 *December 8th, 2015*
 **Writing better CSS**
 ------------------
@@ -376,4 +377,3 @@ Susy [[.net]](http://susy.oddbird.net/)
  *--Susy website*
 
 Susy is a CSS grid toolkit that’s built with Sass. It makes it easy to work with floated layouts. With Susy we don’t have to pollute our markup with layout utility classes, we simply handle it from within our styles.
-
