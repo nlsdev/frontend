@@ -1,6 +1,5 @@
 **Front-end code guidelines**
-
-*December 8th, 2015*
+**Work in progress Feb 4th 2016**
 **Writing better CSS**
 ------------------
 There are a few things to keep in mind when writing *HTML* and *CSS* for applications at NLS. 
