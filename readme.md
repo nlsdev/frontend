@@ -29,7 +29,7 @@ The following are the namespaces that everyone should consider using. Note that 
 
 **c-**: Signify that something is a **Component**. This is a concrete, implementation-specific piece of UI.
 
-**w**-: Signify that something is a **Widget**. Similar to component but most often has complex business logic behind it and a team responsible for it. Think Player Account team owning a Wallet widget.
+**w**-: Signify that something is a **Widget**. Similar to a component but most often has a team behind it responsible for it and its REST services. Think Player Account team owning a Wallet widget.
 
 **u-**: Signify that something is a **Utility** (or helper) class.
 Common utility classes are classes that add margin, padding, float or clearfixes.
