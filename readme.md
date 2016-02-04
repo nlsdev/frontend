@@ -17,7 +17,7 @@ The naming convention follows this pattern:
     .block__element {...}
     .block__element--modifier {...}
 
-The look of it might throw you off, but this convention helps solve the biggest problem we encounter with CSS, the lack of scope (everything is global). BEM helps us modularize our styles so that we can prevent naming conflicts and specificity wars. It also provides a good object oriented structure with a familiar terminology and is simple enough to not get in your way. Last but not least, it gives developers a good overview over what each class in the DOM is responsible for.
+The look of it might throw you off, but this convention helps solve the biggest problem we encounter with CSS, the lack of namespaces/scope and that every rule applies globally. BEM helps us modularize our styles so that we can prevent naming conflicts and specificity wars. It also provides a good object oriented structure with a familiar terminology and is simple enough to not get in your way. Last but not least, it gives developers a good overview over what each class in the DOM is responsible for.
 Examples of how BEM is written and structured can be seen throughout this document.
 
 Namespaces
@@ -63,7 +63,7 @@ and
       <div class="w-wallet__content">
         <p class="w-wallet__balance">
           Your available balance is 
-          <span class="w-wallet__balance__amount">€74</span>
+          <span class="w-wallet__amount">€74</span>
         </p>
         <button class="button--green w-wallet__deposit-button">Deposit</button> <!--#2-->
         <button class="button--default is-disabled w-wallet__withdraw-button">Withdraw</button>
@@ -71,12 +71,13 @@ and
     </div>
 
 
-Note a couple of things:
+Note that you shouldn't nest BEM classes
 
-If the element could logically live outside of its parent’s scope, you don’t need to nest its class name within its parents’. For an example
-`<p class="w_wallet__header__welcome-msg">` is reduntant.
-Buttons are components but we do not need to signify that they are by using the c- prefix. If the component has it’s own designated HTML tag (buttons, tables, checkboxes), it is a self-explanatory component.
-  
+:+1:`<p class="w_wallet__balance">` 
+
+:-1:`<p class="w_wallet__content__balance">`
+
+We want the styles behind `&__balance` to apply regarding of how the wallet’s DOM is structured.
 
 Project structure
 -----------------
