@@ -1,5 +1,5 @@
 **Front-end code guidelines**
-**Work in progress Feb 4th 2016**
+**Work in progress**
 **Writing better CSS**
 ------------------
 There are a few things to keep in mind when writing *HTML* and *CSS* for applications at NLS. 
@@ -18,41 +18,62 @@ The naming convention follows this pattern:
     .block__element--modifier {...}
 
 The look of it might throw you off, but this convention helps solve the biggest problem we encounter with CSS, the lack of namespaces/scope and that every rule applies globally. BEM helps us modularize our styles so that we can prevent naming conflicts and specificity wars. It also provides a good object oriented structure with a familiar terminology and is simple enough to not get in your way. Last but not least, it gives developers a good overview over what each class in the DOM is responsible for.
-Examples of how BEM is written and structured can be seen throughout this document.
+
+BEM Best practices
+----------
+
+Don't `@extend` block modifiers with the block base.
+- Good: `<div class="my-block my-block--modifier">`
+- Bad: `<div class="my-block--modifier">`
+
+Don't create elements inside elements. If you find yourself needing this, consider converting your element into a block.
+- Bad: `.alert-box__close__button`
+
+Choose your modifiers wisely. These two rules have very different meaning:
+
+```scss
+.block--modifier .block__element { color: red; }
+.block__element--modifier { color: red; }
+```
+
+
+More examples of how BEM is written and structured can be seen throughout this document.
 
 Namespaces
 ----------
 
- a way for us to write code that is transparent and self-documenting.
+Optional, but a nice way for us to write code that is transparent and self-documenting.
 
 The following are the namespaces that everyone should consider using. Note that these are class-names, and not IDs. As we should generally avoid using IDs.
 
-**c-**: Signify that something is a **Component**. This is a concrete, implementation-specific piece of UI.
+`o-`: Signify that something is an **Object**. Objects are usually common design patterns (like the Flag object). Modifying these classes could have severe knock-on effects.
 
-**w**-: Signify that something is a **Widget**. Similar to a component but most often has a team behind it responsible for it and its REST services. Think Player Account team owning a Wallet widget.
+`c-, w-`: Signify that something is a **Component** (or a **Widget**). This is a concrete, implementation-specific piece of UI.
 
-**u-**: Signify that something is a **Utility** (or helper) class.
+`u-, h-`: Signify that something is a **Utility** (or **helper**) class.
 Common utility classes are classes that add margin, padding, float or clearfixes.
 
-**is-**: Signify that something is styled this particular way because of a **state** or a **condition**.
+`is-, has-`: Signify that something is styled this particular way because of a **state** or a **condition**. Use these classes for temporary, optional, or short-lived states and styles.
 For example: is-hidden, is-expanded
 
-**t-**: Signify that something is style this particular way because it is a part of a **Theme**.
-For example: Using t-xmas on the body might turn enable a christmas theme on a website.
+`t-`: Signify that something is style this particular way because it is a part of a **Theme**.
+Pages with unique styles or overrides for any objects or components should make use of theme classes.
+For example: Using t-xmas on the body might enable a christmas theme on a page.
 
-**js-**: A hook for **JavaScript**. Can be used as an ID instead of class. Don’t attach styles to this.
+`js-`: A hook for **JavaScript**. Can be used as an ID instead of class. Don’t attach styles to this.
 
 
 In practice this can look something like:
 
+```
     <div class="c-slider" id="js-slider">
     	 <div class="c-slider__image"></div>
     	 <div class="c-slider__image is-hidden"></div>
     	 <div class="c-slider__image is-hidden"></div>
     </div>
-
+ ```
 and
- 
+``` 
     <div class="w-wallet" id="js-wallet">
       <div class="w-wallet__header">
         <h1>Wallet</h1>
@@ -69,7 +90,7 @@ and
         <button class="button--default is-disabled w-wallet__withdraw-button">Withdraw</button>
       </div>
     </div>
-
+```
 
 Note that you shouldn't nest BEM classes
 
@@ -156,7 +177,8 @@ If the partial stylesheet in question uses colors and/or typography values that 
 That way you don’t have to pollute your global config with inappropriate values, and you still have an easy access to modifying the values that matter.
 If a property needs explaining, add comments to the bottom of the file and make a reference to it.
 
-Note that you should be writing consistent CSS, ideally by using SCSS lint (see Tools section.)
+Note that you should be writing consistent CSS, ideally by using a linter (see Tools section.)
+Consistent rule ordering helps the server a lot with gzip.
 
 
 Here’s an example of a component that is properly maintained.
@@ -218,7 +240,7 @@ There’s a brief description that explains what the component is.
 The component is scoped with its class name...
 … making its variables local to that parent class.
 Using &__ in a selector we take advantage of Sass’s support for the BEM syntax. Nesting &__stuff compiles to Block__stuff.
-When doing something that might not be obvious to your fellow developer, we add comments to the bottom of the document and reference them with a //[#] next to the declaration.
+When doing something that might not be obvious to other developers we add comments to the bottom of the document and reference them with a //[#] next to the declaration.
 Using an ampersand (&) after a selector brings the selector in front of the other previous selectors making it useful for modifiers. The selector in question compiles to .c-slider--dark .c-slider__slide.
 
 Conflict free CSS
@@ -273,7 +295,7 @@ CSS also has rem, which is the root em. CSS has a :root selector. Set the :root 
 
 If you want to take advantage of (r)ems but still use the trusty pixels as foundation, you can use a Sass function that converts it for you. See this function, among others at our repo.
 
-Choose SVG icons over icon-fonts
+SVG icons over icon-fonts
 ================================
 
 Include the icons you need as SVG symbols inside a sprite file and reference them in your HTML.
@@ -342,9 +364,9 @@ Responsive Web Design
 
 Gone are the days where we could target a few devices and make them their own breakpoints. With hundreds of available screen resolutions we are forced to make our designs work on every possible size.
 
-Generally, you should create 3 main breakpoints, large, medium, and small -- so it roughly corresponds to desktop, tablet and mobile -- and break your layout down accordingly. Beside those main breakpoints, you should aim to make your application fluid so it scales down naturally. When the content and/or design breaks we’ll add a breakpoint and go from there.
+Generally, you should create 3 main breakpoints, large, medium, and small -- so it roughly corresponds to desktop, tablet and mobile -- and break your layout down accordingly. Beside those main breakpoints, you should aim to make your application fluid so it scales down naturally. When the content and/or design breaks we’ll add a breakpoint and go from there. Component-specific breakpoints should be made as local variables.
 
-Sass has a handy plugin called *Sass-breakpoint* which is highly recommended. Read more about it in the Tools section below.
+Sass has a handy library called *Sass-breakpoint* which is highly recommended. Read more about it in the Tools section below.
 
 
 Tools
