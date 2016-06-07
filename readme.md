@@ -135,34 +135,40 @@ Which is then imported by a master file like so:
 
 
     // * Setup environment
-    @import "environment/global-config";
-    @import "environment/functions";
-    @import "environment/vars";
-    @import "environment/mixins";
+    @import
+    "environment/global-config",
+    "environment/functions",
+    "environment/vars",
+    "environment/mixins";
     
     // * Core
-    @import "core/typography";
-    @import "core/reset";
+    @import 
+    "core/typography",
+    "core/reset";
     
     // * Layout
-    @import "layout/header";
-    @import "layout/footer";
-    @import "layout/section";
-    @import "layout/article";
+    @import
+    "layout/header",
+    "layout/footer",
+    "layout/section",
+    layout/article";
     
     // * Components
-    @import "components/button";
-    @import "components/checkbox";
-    @import "components/slider";
-    @import "components/banner";
+    @import
+    "components/button",
+    "components/checkbox",
+    "components/slider",
+    "components/banner";
     
     // * Widgets
-    @import "widgets/cart";
-    @import "widgets/profile";
-    @import "widgets/converter"
+    @import
+    "widgets/cart",
+    "widgets/profile",
+    "widgets/converter";
     
     // * Vendor (3rd party)
-    @import "vendor/that-plugin";
+    @import 
+    "vendor/that-plugin";
 
 
 As you can see, importing each file instead of globbing `(*/**)` provides a much better overview of the project.
