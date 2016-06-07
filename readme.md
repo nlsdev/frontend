@@ -245,8 +245,8 @@ Note a few things:
 
 1. There’s a brief description that explains what the component is.
 2. The component is scoped with its class name...
-3. … making its variables local to that parent class.
-4.Using &__ in a selector we take advantage of Sass’s support for the BEM syntax. Nesting &__stuff compiles to Block__stuff.
+3. … making its variables local to that parent class. If you don't like variables you can do this with a map as well.
+4. Using &__ in a selector we take advantage of Sass’s support for the BEM syntax. Nesting &__stuff compiles to Block__stuff.
 5. When doing something that might not be obvious to other developers we add comments to the bottom of the document and reference them with a //[#] next to the declaration.
 6. Using an ampersand (&) after a selector brings the selector in front of the other previous selectors making it useful for modifiers. The selector in question compiles to .c-slider--dark .c-slider__slide.
 
