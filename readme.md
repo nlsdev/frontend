@@ -381,11 +381,9 @@ Tools
 
 There are so many tools available that can make our jobs easier when writing and maintaining CSS. Here we will introduce some of the tools that have been of the most value to us.
 
-Autoprefixer [[Gulp]](https://github.com/sindresorhus/gulp-autoprefixer) [[Grunt]](https://github.com/nDmitry/grunt-autoprefixer)
-Autoprefixer lets us skip the nonsense that CSS prefixes are by letting us write unprefixed code. Autoprefixer then uses the *caniuse.com* API to determine what prefixes are needed to satisfy your needs.
-
-Sass (SCSS) [[.com]](http://sass-lang.com) 
-We use the SCSS syntax of the Sass preprocessor to write our styles. Sass gives us huge benefits with configs, nesting, functions, BEM support, and much more. SCSS is then compiled to regular CSS.
+Autoprefixer [[PostCSS]](https://github.com/postcss/autoprefixer) [[Gulp]](https://github.com/sindresorhus/gulp-autoprefixer)
+[[Grunt]](https://github.com/nDmitry/grunt-autoprefixer)
+Autoprefixer lets us skip the nonsense that CSS prefixes are by letting us write unprefixed code. Autoprefixer then uses the *caniuse.com* API to determine what prefixes are needed to satisfy your needs. It's available 
 
 SCSS Lint [[Sublime]](https://github.com/attenzione/SublimeLinter-scss-lint) [[Intellij]](https://github.com/idok/scss-lint-plugin) [[Atom]](https://github.com/idok/scss-lint-plugin)
 This highly configurable IDE plugin highlights your styles as you write them, and tells you if it’s not according to the set standard.
@@ -405,4 +403,4 @@ Susy [[.net]](http://susy.oddbird.net/)
 
  *--Susy website*
 
-Susy is a CSS grid toolkit that’s built with Sass. It makes it easy to work with floated layouts. With Susy we don’t have to pollute our markup with layout utility classes, we simply handle it from within our styles.
+Susy is a CSS grid toolkit that’s built with Sass. It makes it easy to work with floated layouts. If you wish, you can use Susy as a helper with Flexbox as well.
