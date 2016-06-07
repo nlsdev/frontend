@@ -242,12 +242,13 @@ Here’s an example of a component that is properly maintained.
     //[1]: We are animating transform properties on the slider with JavaScript, but we are telling the browser to prepare for the animation with the "will-change" property.*/
 
 Note a few things:
-There’s a brief description that explains what the component is.
-The component is scoped with its class name...
-… making its variables local to that parent class.
-Using &__ in a selector we take advantage of Sass’s support for the BEM syntax. Nesting &__stuff compiles to Block__stuff.
-When doing something that might not be obvious to other developers we add comments to the bottom of the document and reference them with a //[#] next to the declaration.
-Using an ampersand (&) after a selector brings the selector in front of the other previous selectors making it useful for modifiers. The selector in question compiles to .c-slider--dark .c-slider__slide.
+
+1. There’s a brief description that explains what the component is.
+2. The component is scoped with its class name...
+3. … making its variables local to that parent class.
+4.Using &__ in a selector we take advantage of Sass’s support for the BEM syntax. Nesting &__stuff compiles to Block__stuff.
+5. When doing something that might not be obvious to other developers we add comments to the bottom of the document and reference them with a //[#] next to the declaration.
+6. Using an ampersand (&) after a selector brings the selector in front of the other previous selectors making it useful for modifiers. The selector in question compiles to .c-slider--dark .c-slider__slide.
 
 Conflict free CSS
 -----------------
