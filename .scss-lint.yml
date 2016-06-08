@@ -27,10 +27,10 @@ linters:
     enabled: false
 
   DebugStatement:
-    enabled: true
+    enabled: false
 
   DeclarationOrder:
-    enabled: true
+    enabled: false
 
   DisableLinterReason:
     enabled: true
@@ -71,7 +71,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -85,7 +85,7 @@ linters:
     width: 2
 
   LeadingZero:
-    enabled: true
+    enabled: false
     style: exclude_zero
 
   MergeableSelector:
@@ -93,7 +93,7 @@ linters:
     force_nesting: true
 
   NameFormat:
-    enabled: true
+    enabled: false
     allow_leading_underscore: true
     convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
 
@@ -170,7 +170,7 @@ linters:
     enabled: true
 
   SpaceAroundOperator:
-    enabled: true
+    enabled: false
     style: one_space # or 'no_space'
 
   SpaceBeforeBrace:
