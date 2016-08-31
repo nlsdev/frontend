@@ -1,6 +1,4 @@
-**Front-end code guidelines**
-**Work in progress**
-**Writing better CSS**
+**CSS Guidelines**
 ------------------
 There are a few things to keep in mind when writing *HTML* and *CSS* for applications at NLS. 
 
