@@ -6,11 +6,9 @@ There are a few things to keep in mind when writing *HTML* and *CSS* for applica
 
 ----------
 
-Terminology
---
+# Terminology
 
-Rule declaration
----
+## Rule declaration
 
 A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
 
@@ -21,8 +19,8 @@ A “rule declaration” is the name given to a selector (or a group of selector
 }
 ```
 
-Selectors
----
+## Selectors
+
 
 In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
 
@@ -36,8 +34,7 @@ In a rule declaration, “selectors” are the bits that determine which element
 }
 ```
 
-Properties
----
+## Properties
 
 Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
 
@@ -48,9 +45,9 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-## CSS
+# CSS
 
-### Formatting
+## Formatting
 
 * Use soft tabs (2 spaces) for indentation
 * Prefer dashes over camelCasing in class names.
@@ -91,7 +88,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-### OOCSS and BEM
+## OOCSS and BEM
 
 We encourage some combination of OOCSS and BEM for these reasons:
 
@@ -143,8 +140,7 @@ function ListingCard() {
   * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
   * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
 
-Namespaces
-----------
+## Namespaces
 
 Optional, but a nice way for us to write code that is transparent and self-documenting.
 
@@ -182,17 +178,16 @@ Note that you shouldn't nest BEM classes
 
 We want the styles behind `&__balance` to apply regarding of how the wallet’s DOM is structured.
 
-Sass
---
+# Sass
 
-Syntax
----
+
+## Syntax
 
 * Use the `.scss` syntax, never the original `.sass` syntax
 * Order your regular CSS and `@include` declarations logically (see below)
 
-Ordering of property declarations
----
+## Ordering of property declarations
+
 
 1. Property declarations
 
@@ -235,23 +230,19 @@ Ordering of property declarations
     }
     ```
 
-Variables
----
+## Variables
 
 Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
 
-Mixins
----
+## Mixins
 
 Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
 
-Extend directive
----
+## Extend directive
 
 `@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
 
-Nested selectors
----
+## Nested selectors
 
 **Do not nest selectors more than three levels deep!**
 
@@ -276,8 +267,7 @@ Again: **never nest ID selectors!**
 
 If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
 
-Project structure
---
+# Project structure
 
 keep a good overview over the project.
 
@@ -307,8 +297,7 @@ Most projects differ from one another but a good project structure could be like
     │   │   └───_that-plugin.scss
 
 
-Writing maintainable CSS
------------------
+# Writing maintainable CSS
 
 You should always aim to write styles that can be easily understood by other developers.
 Begin your files with a quick description of what you are doing and how others can use it.
@@ -320,15 +309,13 @@ If a property needs explaining, add comments to the bottom of the file and make 
 Note that you should be writing consistent CSS, ideally by using a linter (see Tools section.)
 Consistent rule ordering helps the server a lot with gzip.
 
-Responsive Web Design
------------------
+# Responsive Web Design
 
 Generally you should create 3 main breakpoints; large, medium, and small -- so it roughly corresponds to desktop, tablet and mobile -- and break your layout down accordingly.
 
 You should aim to make your layout mobile-first and fluid so it scales up naturally. When you need to shift the layout drastically you use the above device targetted breakpoints. When the content and/or design breaks we’ll add a new breakpoint and go from there. Try to keep those custom breakpoints to a mininum. Component-specific breakpoints should be made as local variables.
 
-Conflict free CSS
------------------
+# Conflict free CSS
 
 The best way to prevent CSS conflicts in large web applications (besides using iframes) is to wrap our style with your or your team’s prefix. This is also called namespacing, not to be confused with the modular namespacing method that we covered before.
 An example of a namespaced widget could be something like this
@@ -368,8 +355,7 @@ An example of a namespaced widget could be something like this
 
 This way our styles will never affect the hosting page’s styles. Unfortunately, this doesn’t prevent other stylesheets from leaking into ours so the host page has to have its styles namespaced as well.
 
-Units of measurement
-====================
+# Units of measurement
 
 Using pixel values in CSS is fine, but when making a responsive web application that’s rich of text consider using ems and/or rems.
 
