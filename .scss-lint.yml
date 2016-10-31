@@ -18,7 +18,7 @@ linters:
     convention: zero # or `none`
 
   ColorKeyword:
-    enabled: true
+    enabled: false # DBJ: Does not recognize maps, so we disable it.
 
   ColorVariable:
     enabled: false # DBJ: Does not recognize maps, so we disable it.
@@ -68,7 +68,7 @@ linters:
     enabled: true
 
   IdSelector:
-    enabled: true
+    enabled: false
 
   ImportantRule:
     enabled: false
@@ -131,18 +131,18 @@ linters:
     properties: {}
 
   QualifyingElement:
-    enabled: true
+    enabled: false
     allow_element_with_attribute: true
     allow_element_with_class: false
     allow_element_with_id: false
 
   SelectorDepth:
     enabled: true
-    max_depth: 3
+    max_depth: 4
 
   SelectorFormat:
     enabled: true
-    convention: hyphenated_lowercase # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    convention: hyphenated_BEM # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:
     enabled: true
